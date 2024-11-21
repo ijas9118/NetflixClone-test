@@ -12,7 +12,7 @@ const Home: React.FC = () => {
       <div className="relative">
         <img src={hero_banner} alt="Hero Banner" className="w-full h-[700px] object-cover" />
         <div className="absolute inset-0 bg-gradient-to-r from-black/75 to-transparent"></div>
-        <div className="absolute bottom-24 p-10">
+        <div className="absolute bottom-24 p-10 ml-5">
           <img src={hero_title} alt="Hero Title" className="mb-10 w-1/3" />
           <p className="w-2/4 font-medium">
             Discovering his ties to a secret ancient order, a young man living in modern Istanbul
@@ -30,9 +30,12 @@ const Home: React.FC = () => {
           </div>
         </div>
       </div>
-      <TitleCards />
+
+      <TitleCards title="Popular on Netflix" category="popular" />
+      <TitleCards title="Top Rated" category="top_rated" />
+      <TitleCards title="Upcoming Movies" category="upcoming" />
     </div>
-  );
+  ); 
 };
 
 export default Home;
