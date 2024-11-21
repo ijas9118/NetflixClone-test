@@ -33,12 +33,15 @@ const TitleCards: React.FC<TitleCardsProps> = ({ title, category }) => {
   }, []);
 
   return (
-    <div className='ml-16 mt-6 mb-3'>
+    <div className=' ml-16 mt-6 mb-3'>
       <h2 className='text-2xl mt-5 mb-3'>{title}</h2>
-      <div className='flex gap-2 w-full overflow-x-scroll scrollbar-hidden'>
+      <div className='flex gap-2 w-full overflow-x-scroll overflow-y-hidden scrollbar-hidden'>
         {apiData.map((card, index) => {
           return (
-            <div key={index} className='min-w-64 cursor-pointer'>
+            <div
+              key={index}
+              className='min-w-64 cursor-pointer group hover:scale-105 transition-transform duration-300'
+            >
               <img
                 className='w-96 rounded-md'
                 src={`https://image.tmdb.org/t/p/w300` + card.backdrop_path}
