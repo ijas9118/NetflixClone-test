@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 interface Movie {
   backdrop_path: string;
   title: string;
+  id: number;
 }
 
 interface TitleCardsProps {
@@ -38,7 +40,8 @@ const TitleCards: React.FC<TitleCardsProps> = ({ title, category }) => {
       <div className='flex gap-2 w-full overflow-x-scroll overflow-y-hidden scrollbar-hidden'>
         {apiData.map((card, index) => {
           return (
-            <div
+            <Link
+              to={`/player/${card.id}`}
               key={index}
               className='min-w-64 cursor-pointer group hover:scale-105 transition-transform duration-300'
             >
@@ -50,7 +53,7 @@ const TitleCards: React.FC<TitleCardsProps> = ({ title, category }) => {
               <p className='text-center mt-2 text-sm text-gray-300'>
                 {card.title}
               </p>
-            </div>
+            </Link>
           );
         })}
       </div>

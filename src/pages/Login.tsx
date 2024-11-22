@@ -1,9 +1,19 @@
 import React, { useState } from "react";
 import logo from "../assets/logo.png";
 import bg_image from "../assets/login_bg.jpg";
+import { login, signup } from "../firebase";
 
 const Login: React.FC = () => {
   const [signState, setSignState] = useState("Sign In");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const userAuth = async (e: any) => {
+    e.preventDefault();
+    if (signState === "Sign In") await login({ email, password });
+    else await signup({ name, email, password });
+  };
 
   return (
     <div className='m-6 px-36'>
@@ -18,6 +28,8 @@ const Login: React.FC = () => {
               <input
                 type='text'
                 placeholder='Name'
+                value={name}
+                onChange={(e) => setName(e.target.value)}
                 className='mb-4 px-4 py-3 w-full bg-white/[0.08] border-[1.5px] border-neutral-600 rounded-md outline-none'
               />
             ) : (
@@ -26,14 +38,22 @@ const Login: React.FC = () => {
             <input
               type='email'
               placeholder='Email or mobile number'
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               className='mb-4 px-4 py-3 w-full bg-white/[0.08] border-[1.5px] border-neutral-600 rounded-md outline-none'
             />
             <input
               type='password'
               placeholder='Password'
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
               className='mb-4 px-4 py-3 w-full bg-white/[0.08] border-[1.5px] border-neutral-600 rounded-md outline-none'
             />
-            <button className='mb-4 px-4 py-2 w-full rounded-md bg-[#E60814] hover:bg-[#CC0F18] duration-200'>
+            <button
+              className='mb-4 px-4 py-2 w-full rounded-md bg-[#E60814] hover:bg-[#CC0F18] duration-200'
+              type='submit'
+              onClick={userAuth}
+            >
               {signState === "Sign In" ? "Sign In" : "Register"}
             </button>
             <div className='flex flex-col gap-3'>
@@ -60,7 +80,9 @@ const Login: React.FC = () => {
                     New to Netflix?{" "}
                     <span
                       className='font-normal text-white hover:underline hover:underline-offset-1'
-                      onClick={() => {setSignState("Sign Up")}}
+                      onClick={() => {
+                        setSignState("Sign Up");
+                      }}
                     >
                       Sign Up
                     </span>
