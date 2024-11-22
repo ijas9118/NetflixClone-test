@@ -20,8 +20,7 @@ const TitleCards: React.FC<TitleCardsProps> = ({ title, category }) => {
     params: { language: "en-US", page: "1" },
     headers: {
       accept: "application/json",
-      Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyZjY0MGE4Y2RkODU2ODllZTY2ZTg5OTgwOGYzNGY1NCIsIm5iZiI6MTczMjEyMzYwNy41NjAwMDkyLCJzdWIiOiI2NzNlMTU2NjI0NzkxN2U5NWIyYjBkMzgiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.CJMPidVWAUYGYPyh5Xmdc1z_27bPqpW4jPPitS24X2c",
+      Authorization: import.meta.env.TMDB_AUTH,
     },
   };
 
