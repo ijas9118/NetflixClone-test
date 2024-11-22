@@ -14,13 +14,15 @@ interface TitleCardsProps {
 }
 
 const TitleCards: React.FC<TitleCardsProps> = ({ title, category }) => {
+  console.log("qwert");
+  console.log(import.meta.env);
   const options = {
     method: "GET",
     url: `https://api.themoviedb.org/3/movie/${category}`,
     params: { language: "en-US", page: "1" },
     headers: {
       accept: "application/json",
-      Authorization: import.meta.env.TMDB_AUTH,
+      Authorization: import.meta.env.VITE_TMDB_AUTH,
     },
   };
 
